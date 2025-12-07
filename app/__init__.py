@@ -1,12 +1,13 @@
-#app_init.
 from flask import Flask
-from config import Config
 
 def create_app():
-    app-Flask(__name__)
-    app.config.from_object(Config)
+    app = Flask(__name__)
 
-    from.routes import main_bp
-    app.register_blueprint(main_bp)
+    from .routes import bp
+    app.register_blueprint(bp)
+
+    # Можно загрузить конфиг
+    from config import Config
+    app.config.from_object(Config)
 
     return app
