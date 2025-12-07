@@ -1,5 +1,5 @@
-from flask import Blueprint, jsonify
 from config import Config
+from flask import Blueprint, jsonify
 
 bp = Blueprint("main", __name__)
 
