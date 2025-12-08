@@ -1,11 +1,31 @@
-version: '3.8'
+version: '3.9'
 
 services:
-  nero_hub_api:
+  web:
     build: .
+    container_name: nero-hub-web
+    restart: always
     ports:
       - "5000:5000"
+    depends_on:
+      - db
     env_file:
       - .env
     volumes:
-      - ./:/app
+      - .:/app
+
+  db:
+    image: postgres:15
+    container_name: nero-hub-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

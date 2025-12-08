@@ -1,11 +1,7 @@
-from config import Config
-from flask import Blueprint, jsonify
+from flask import Blueprint
 
-bp = Blueprint("main", __name__)
+bp = Blueprint('main', __name__)
 
-@bp.route("/")
+@bp.route('/')
 def index():
-    return jsonify({
-        "status": f"{Config.APP_NAME} is running",
-        "mode": "Dev"
-    })
+    return "я все сделять"
