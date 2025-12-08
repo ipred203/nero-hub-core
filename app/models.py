@@ -1,7 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
+from app import db
 from datetime import datetime
-
-db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,6 +9,6 @@ class User(db.Model):
 
 class SensorData(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    sensor_type = db.Column(db.String(20), nullable=False) 
+    sensor_type = db.Column(db.String(32), nullable=False)
     value = db.Column(db.Float, nullable=False)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)

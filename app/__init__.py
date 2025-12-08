@@ -1,8 +1,9 @@
 from flask import Flask
-from config import Config
+from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from app.models import db
+from config import Config
 
+db = SQLAlchemy()
 migrate = Migrate()
 
 def create_app():
